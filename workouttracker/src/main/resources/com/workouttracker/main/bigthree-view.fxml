@@ -29,7 +29,7 @@
                         </HBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="136.0" prefWidth="374.0" text="Bench">
+                        <Button mnemonicParsing="false" onMouseClicked="#LoadBenchGraph" prefHeight="136.0" prefWidth="374.0" text="Bench">
                            <font>
                               <Font name="Times New Roman Bold" size="32.0" />
                            </font>
@@ -37,7 +37,7 @@
                               <Insets bottom="100.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="136.0" prefWidth="374.0" text="Squat">
+                        <Button mnemonicParsing="false" onMouseClicked="#LoadSquatGraph" prefHeight="136.0" prefWidth="374.0" text="Squat">
                            <font>
                               <Font name="Times New Roman Bold" size="32.0" />
                            </font>
@@ -45,7 +45,7 @@
                               <Insets bottom="100.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="136.0" prefWidth="374.0" text="Deadlift">
+                        <Button mnemonicParsing="false" onMouseClicked="#LoadDeadliftGraph" prefHeight="136.0" prefWidth="374.0" text="Deadlift">
                            <font>
                               <Font name="Times New Roman Bold" size="32.0" />
                            </font>

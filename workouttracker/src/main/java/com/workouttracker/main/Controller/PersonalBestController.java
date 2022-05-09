@@ -1,5 +1,6 @@
 package com.workouttracker.main.Controller;
 
+import com.workouttracker.main.Model.PersonalBestData;
 import com.workouttracker.main.WorkoutApplication;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -10,6 +11,8 @@ import javafx.scene.layout.HBox;
 public class PersonalBestController {
     @FXML
     private Button BigThreeBtn;
+
+    private PersonalBestData pbData;
     @FXML
     private HBox BigWindow;
     @FXML
@@ -35,5 +38,9 @@ public class PersonalBestController {
 
             e.printStackTrace();
         }
+    }
+
+    public void getDataModel(PersonalBestData pbData){
+        this.pbData = pbData;
     }
 }
