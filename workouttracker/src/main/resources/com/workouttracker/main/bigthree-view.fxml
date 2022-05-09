@@ -80,7 +80,7 @@
                                 </Button>
                             </children>
                         </HBox>
-                  <LineChart style="-fx-font-family: Times New Roman;" title="Bench" VBox.vgrow="ALWAYS">
+                  <LineChart fx:id="liftGraph" style="-fx-font-family: Times New Roman;" title="Bench" VBox.vgrow="ALWAYS">
                     <xAxis>
                       <CategoryAxis label="Test" side="BOTTOM">
                            <tickLabelFont>
