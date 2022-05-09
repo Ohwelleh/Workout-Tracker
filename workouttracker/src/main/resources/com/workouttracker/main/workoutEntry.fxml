@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="100.0" prefWidth="390.0" style="-fx-background-color: #164FAB#164FAB; -fx-background-radius: 32;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.workouttracker.main.Controller.WorkoutEntryController">
+   <children>
+      <HBox alignment="CENTER" layoutX="68.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-radius: 32;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="dateLabel" text="May 9" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="32.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="145.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="timeLabel" text="9:32 AM" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="32.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</AnchorPane>

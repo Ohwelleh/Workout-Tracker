@@ -22,7 +22,7 @@ public class WorkoutApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         primaryStage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("workout-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(WorkoutApplication.class.getResource("workout-view.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 1315, 810);
         primaryStage.setTitle("Workout Tracker");
