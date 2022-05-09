@@ -54,11 +54,11 @@
                                 </Button>
                             </children>
                         </HBox>
-                  <TableView prefHeight="200.0" prefWidth="200.0" style="-fx-font-family: Times New Roman;" VBox.vgrow="ALWAYS">
+                  <TableView fx:id="personalBestTable" prefHeight="200.0" prefWidth="200.0" style="-fx-font-family: Times New Roman;" VBox.vgrow="ALWAYS">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="Exercise" />
-                      <TableColumn prefWidth="75.0" text="Strength" />
-                        <TableColumn prefWidth="75.0" text="For reps" />
+                      <TableColumn fx:id="exerciseNameCol" prefWidth="75.0" text="Exercise" />
+                      <TableColumn fx:id="strengthPRCol" prefWidth="75.0" text="Strength" />
+                        <TableColumn fx:id="repsPRCol" prefWidth="75.0" text="For reps" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
