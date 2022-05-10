@@ -61,6 +61,7 @@ public class PersonalBestController {
         pbData = mockData();
         HashMap<String, String[]> data = pbData.getPersonalBest();
         ObservableList<PersonalBestEntry> dataList = FXCollections.observableArrayList();
+
         for(Map.Entry<String, String[]> entry : data.entrySet()){
             dataList.add(new PersonalBestEntry(entry.getKey(), entry.getValue()[0], entry.getValue()[1]));
         }

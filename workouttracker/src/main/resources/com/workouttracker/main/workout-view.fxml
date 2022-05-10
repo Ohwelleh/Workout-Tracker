@@ -98,9 +98,10 @@
                                 </HBox>
                         <TableView fx:id="EntryTable" prefHeight="503.0" prefWidth="880.0" style="-fx-background-color: #164FAB#164FAB; -fx-font-family: Times New Roman;">
                           <columns>
-                            <TableColumn prefWidth="75.0" style="-fx-background-color: #164FAB; -fx-font-size: 18; -fx-font-family: Times New Roman;" text="Exercise Name" />
-                            <TableColumn editable="false" prefWidth="75.0" sortable="false" style="-fx-background-color: #164FAB; -fx-font-size: 18;" text="Sets completed" />
-                              <TableColumn prefWidth="75.0" style="-fx-background-color: #164FAB; -fx-font-size: 18;" text="Reps" />
+                            <TableColumn fx:id="exerciseNameCol" prefWidth="75.0" style="-fx-background-color: #164FAB; -fx-font-size: 20; -fx-font-family: Times New Roman;" text="Exercise Name" />
+                              <TableColumn fx:id="weightCol" prefWidth="75.0" style="-fx-background-color: #164FAB; -fx-font-size: 20;" text="Weight" />
+                            <TableColumn fx:id="setsCol" editable="false" prefWidth="75.0" sortable="false" style="-fx-background-color: #164FAB; -fx-font-size: 20;" text="Sets completed" />
+                              <TableColumn fx:id="repsCol" prefWidth="75.0" style="-fx-background-color: #164FAB; -fx-font-size: 20;" text="Reps" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

@@ -1,6 +1,7 @@
 package com.workouttracker.main.Controller;
 
 import com.workouttracker.main.Model.BigThreeData;
+import com.workouttracker.main.Model.ExerciseEntry;
 import com.workouttracker.main.Model.PersonalBestData;
 import com.workouttracker.main.Model.Workout;
 import com.workouttracker.main.MyListener;
@@ -9,15 +10,14 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class WorkoutController {
 
@@ -37,8 +37,6 @@ public class WorkoutController {
     @FXML
     private HBox DateCard;
     @FXML
-    private TableView EntryTable;
-    @FXML
     private Button PeronalBestBtn;
     @FXML
     private VBox selectedWorkout;
@@ -50,13 +48,27 @@ public class WorkoutController {
     private ScrollPane scrollWindow;
     @FXML
     private GridPane workoutGrid;
+    @FXML
+    private TableView<ExerciseEntry> EntryTable;
+    @FXML
+    private TableColumn<ExerciseEntry, String> exerciseNameCol;
+    @FXML
+    private TableColumn<ExerciseEntry, String> weightCol;
+    @FXML
+    private TableColumn<ExerciseEntry, String> setsCol;
+    @FXML
+    private TableColumn<ExerciseEntry, String> repsCol;
 
     private List<Workout> getData(){
         List<Workout> workouts = new ArrayList<>();
-        Workout workout;
+        Workout tempWorkout;
         for(int i = 1; i < 21; i++){
-            workout = new Workout("May " + i, "5:00 AM");
-            workouts.add(workout);
+            tempWorkout = new Workout("May " + i, "5:00 AM");
+            int k = i * 3;
+            for(int j = 1; j < 5; j++){
+                tempWorkout.addExercise("Exercise " + k, "" + (j * 2), "2-3", "" + (j * 150),"S");
+            }
+            workouts.add(tempWorkout);
         }
         return workouts;
     }
@@ -65,6 +77,10 @@ public class WorkoutController {
     private void initialize(){
         // This load everytime I switch to this controller.
         System.out.println("Starting WorkController");
+        exerciseNameCol.setCellValueFactory(new PropertyValueFactory<>("ExerciseName"));
+        weightCol.setCellValueFactory(new PropertyValueFactory<>("Weight"));
+        setsCol.setCellValueFactory(new PropertyValueFactory<>("TotalSets"));
+        repsCol.setCellValueFactory(new PropertyValueFactory<>("RangeOfReps"));
 
         int column = 0;
         int row = 1;
@@ -143,8 +159,12 @@ public class WorkoutController {
 
     // Method for updating the chosen workout pane.
     private void setChosenWorkout(Workout workout){
+        EntryTable.getItems().clear();
         selectedDateLabel.setText(workout.getExerciseDate());
         selectedTimeLabel.setText(workout.getExerciseTime());
+        EntryTable.setItems(workout.getExercises());
+        System.out.println(workout.getExercises());
+        EntryTable.refresh();
     }
 
     // Methods for initializing the custom data objects.

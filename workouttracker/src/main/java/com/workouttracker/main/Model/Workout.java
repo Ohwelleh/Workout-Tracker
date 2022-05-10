@@ -1,22 +1,22 @@
 package com.workouttracker.main.Model;
 
-import java.util.ArrayList;
-import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Workout {
 
     private String exerciseDate;
     private String exerciseTime;
-    private List<ExerciseEntry> exercises;
+    private ObservableList<ExerciseEntry> exercises;
 
     public Workout(String exerciseDate, String exerciseTime) {
         this.exerciseDate = exerciseDate;
         this.exerciseTime = exerciseTime;
-        this.exercises = new ArrayList<>();
+        this.exercises = FXCollections.observableArrayList();
     }
 
-    public void addExercise(String exerciseName, String totalSets, String rangeOfReps, String workoutType){
-        ExerciseEntry newExercise = new ExerciseEntry(exerciseName, totalSets, rangeOfReps, workoutType);
+    public void addExercise(String exerciseName, String totalSets, String rangeOfReps, String weight, String workoutType){
+        ExerciseEntry newExercise = new ExerciseEntry(exerciseName, totalSets, rangeOfReps, weight, workoutType);
         exercises.add(newExercise);
     }
 
@@ -31,9 +31,9 @@ public class Workout {
         }
     }
 
-    public void editExercise(String exerciseName, String totalSets, String rangeOfReps, String workoutType, int indexLocation){
+    public void editExercise(String exerciseName, String totalSets, String rangeOfReps, String weight, String workoutType, int indexLocation){
         // TODO: See if you can use the table view index values to speed this up.
-        ExerciseEntry updatedExercise = new ExerciseEntry(exerciseName, totalSets, rangeOfReps, workoutType);
+        ExerciseEntry updatedExercise = new ExerciseEntry(exerciseName, totalSets, rangeOfReps, weight, workoutType);
         exercises.set(indexLocation, updatedExercise);
     }
 
@@ -46,7 +46,7 @@ public class Workout {
         this.exerciseTime = exerciseTime;
     }
 
-    public void setExercises(List<ExerciseEntry> exercises) {
+    public void setExercises(ObservableList<ExerciseEntry> exercises) {
         this.exercises = exercises;
     }
 
@@ -59,7 +59,8 @@ public class Workout {
         return exerciseTime;
     }
 
-    public List<ExerciseEntry> getExercises() {
-        return exercises;
+    public ObservableList<ExerciseEntry> getExercises() {
+        ObservableList<ExerciseEntry> copyList = FXCollections.observableArrayList(exercises);
+        return copyList;
     }
 }
