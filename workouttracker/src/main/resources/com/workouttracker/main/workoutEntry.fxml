@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="100.0" prefWidth="390.0" style="-fx-background-color: #164FAB#164FAB; -fx-background-radius: 32;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.workouttracker.main.Controller.WorkoutEntryController">
+<AnchorPane onMouseClicked="#click" prefHeight="100.0" prefWidth="390.0" style="-fx-background-color: #164FAB#164FAB; -fx-background-radius: 32;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.workouttracker.main.Controller.WorkoutEntryController">
    <children>
       <HBox alignment="CENTER" layoutX="68.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-radius: 32;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
