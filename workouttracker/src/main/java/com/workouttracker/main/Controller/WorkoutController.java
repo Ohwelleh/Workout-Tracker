@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class WorkoutController {
 
@@ -59,6 +60,7 @@ public class WorkoutController {
     @FXML
     private TableColumn<ExerciseEntry, String> repsCol;
 
+    // Method for creating the mock data
     private List<Workout> getData(){
         List<Workout> workouts = new ArrayList<>();
         Workout tempWorkout;
@@ -73,22 +75,38 @@ public class WorkoutController {
         return workouts;
     }
 
+    /*
+    * TODO: These are the next steps for the Workout Section.
+    *       1) Implement the "Add Workout" button functionality
+    *       2) Implement the ability to edit/update/delete workout entries
+    *       3) (Maybe) Implement a notes section for each workout.
+    *       4) Overhaul styling.
+    */
     @FXML
     private void initialize(){
-        // This load everytime I switch to this controller.
+        // TODO: This is called everytime I switch to this pane.
+        // TODO: Potential fixes: A) find a better way to transition, B) Set a flag indicating first load
         System.out.println("Starting WorkController");
+
+        // Variables
+        int column = 0;
+        int row = 1;
+
+        // Initializing the Custom data objects.
+        bigThree = new BigThreeData();
+        pbData = new PersonalBestData();
+
+        // Initializing the cell values for each column.
         exerciseNameCol.setCellValueFactory(new PropertyValueFactory<>("ExerciseName"));
         weightCol.setCellValueFactory(new PropertyValueFactory<>("Weight"));
         setsCol.setCellValueFactory(new PropertyValueFactory<>("TotalSets"));
         repsCol.setCellValueFactory(new PropertyValueFactory<>("RangeOfReps"));
 
-        int column = 0;
-        int row = 1;
-        bigThree = new BigThreeData();
-        pbData = new PersonalBestData();
 
         // Getting the Mock workout data.
         workouts.addAll(getData());
+
+        // Initializing the chosen workout with the first workout in the wokouts list.
         if(workouts.size() > 0) {
             setChosenWorkout(workouts.get(0));
             myListener = new MyListener() {
@@ -112,10 +130,12 @@ public class WorkoutController {
                 wkEntryController.setData(workouts.get(i), myListener);
                 workoutGrid.add(anchorPane, column, row++);
 
+                // Setting the width of the grid.
                 workoutGrid.setMinWidth(Region.USE_COMPUTED_SIZE);
                 workoutGrid.setPrefWidth(Region.USE_COMPUTED_SIZE);
                 workoutGrid.setMaxWidth(Region.USE_COMPUTED_SIZE);
 
+                // Setting the height of the grid
                 workoutGrid.setMinHeight(Region.USE_COMPUTED_SIZE);
                 workoutGrid.setPrefHeight(Region.USE_COMPUTED_SIZE);
                 workoutGrid.setMaxHeight(Region.USE_COMPUTED_SIZE);
@@ -123,8 +143,11 @@ public class WorkoutController {
 
                 GridPane.setMargin(anchorPane, new Insets(5));
             }
+
         }catch (IOException e){
+
             e.printStackTrace();
+
         }
 
     }
@@ -133,13 +156,18 @@ public class WorkoutController {
     @FXML
     public void LoadBigThree(Event event) {
         try {
+
             WorkoutApplication.changeScene("bigthree-view.fxml");
+
         }catch (Exception e){
+
             e.printStackTrace();
+
         }
     }
     @FXML
     public void LoadWorkouts(Event event) {
+        // TODO: Can most likely delete this method.
         DateCard.setVisible(true);
         MainLabel.setText("Workouts");
         EntryTable.setVisible(true);
@@ -149,21 +177,29 @@ public class WorkoutController {
     @FXML
     public void loadPB(Event event) {
         try {
+
             WorkoutApplication.changeScene("personalbest-view.fxml");
+
         }catch (Exception e){
 
             e.printStackTrace();
+
         }
 
     }
 
     // Method for updating the chosen workout pane.
     private void setChosenWorkout(Workout workout){
+
+        // Clearing the data within the table.
         EntryTable.getItems().clear();
+
+        // Setting the Date and Time labels to the chosen workout.
         selectedDateLabel.setText(workout.getExerciseDate());
         selectedTimeLabel.setText(workout.getExerciseTime());
+
+        // Adding the chosen workout exercise data to the table and refreshing the table.
         EntryTable.setItems(workout.getExercises());
-        System.out.println(workout.getExercises());
         EntryTable.refresh();
     }
 
@@ -180,5 +216,30 @@ public class WorkoutController {
 
     public PersonalBestData getPbData(){
         return pbData;
+    }
+
+    @FXML
+    public void createNewWorkout(Event event) {
+        // TODO: Exception when loading this dialog pane. Says a column is null.
+        // TODO: I think it might be because Initialize is called again. Must fix this.
+        try{
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(WorkoutApplication.class.getResource("addworkout-dialog.fxml"));
+            DialogPane workoutDialog = loader.load();
+
+            WorkoutController wkController = loader.getController();
+
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setDialogPane(workoutDialog);
+            dialog.setTitle("Create New Workout");
+
+            Optional<ButtonType> clickedButton = dialog.showAndWait();
+
+        }catch (IOException e){
+
+            e.printStackTrace();
+
+        }
     }
 }

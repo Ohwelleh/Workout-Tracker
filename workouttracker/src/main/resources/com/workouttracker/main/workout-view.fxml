@@ -43,7 +43,7 @@
                         </ScrollPane>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                             <children>
-                                <Button mnemonicParsing="false" text="Add Workout">
+                                <Button mnemonicParsing="false" onMouseClicked="#createNewWorkout" text="Add Workout">
                                     <font>
                                         <Font name="Times New Roman Bold" size="36.0" />
                                     </font></Button>
