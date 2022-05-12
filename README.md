@@ -14,9 +14,13 @@ I define the "Strength" workout type as any exercise perfomed in the rep range o
 
 ## Workout page
 This page allows users to enter their workouts to track the date, time, weights, and exercises done. The goal is to have this data then be used to update the Big 3 and Personal best pages.
+![Workout](https://github.com/Ohwelleh/Workout-Tracker/blob/master/ReadMeImage/Workout.png)
 
 ## Big Three Graph
 This page is to visually display the progress of users Flat Bench, Squat, and Deadlift.
+![Big Three](https://github.com/Ohwelleh/Workout-Tracker/blob/master/ReadMeImage/Big%20three.png)
+
 
 ## Personal Best
 This page allows users to easily see their maximum weights used for both Strenth training and High Rep training.
+![Personal Best](https://github.com/Ohwelleh/Workout-Tracker/blob/master/ReadMeImage/Personal%20Best.png)
