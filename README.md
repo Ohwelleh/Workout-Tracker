@@ -3,6 +3,8 @@ Workout tracker is a desktop application developed in Java and JavaFX. The goal 
 
 I define the "Strength" workout type as any exercise perfomed in the rep range of 3-5, while "Reps" are in the rep range of 8-12/to failure.
 
+***Stopping this project for now due to constant issues JavaFX and a lack of resources***
+
 ### Current version
 - All the windows have the basic functionality implemented.
 - Currently displaying mock data properly
