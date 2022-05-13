@@ -86,6 +86,7 @@ public class WorkoutController {
     private void initialize(){
         // TODO: This is called everytime I switch to this pane.
         // TODO: Potential fixes: A) find a better way to transition, B) Set a flag indicating first load
+        if(!WorkoutApplication.isStartUP()) return;
         System.out.println("Starting WorkController");
 
         // Variables
@@ -143,6 +144,8 @@ public class WorkoutController {
 
                 GridPane.setMargin(anchorPane, new Insets(5));
             }
+
+            WorkoutApplication.setStartUP(false);
 
         }catch (IOException e){
 
@@ -228,7 +231,7 @@ public class WorkoutController {
             loader.setLocation(WorkoutApplication.class.getResource("addworkout-dialog.fxml"));
             DialogPane workoutDialog = loader.load();
 
-            WorkoutController wkController = loader.getController();
+//            WorkoutController wkController = loader.getController();
 
             Dialog<ButtonType> dialog = new Dialog<>();
             dialog.setDialogPane(workoutDialog);
