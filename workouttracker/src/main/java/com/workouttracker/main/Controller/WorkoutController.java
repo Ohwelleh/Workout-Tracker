@@ -86,28 +86,29 @@ public class WorkoutController {
     private void initialize(){
         // TODO: This is called everytime I switch to this pane.
         // TODO: Potential fixes: A) find a better way to transition, B) Set a flag indicating first load
-        if(!WorkoutApplication.isStartUP()) return;
-        System.out.println("Starting WorkController");
-
-        // Variables
-        int column = 0;
-        int row = 1;
-
-        // Initializing the Custom data objects.
-        bigThree = new BigThreeData();
-        pbData = new PersonalBestData();
-
         // Initializing the cell values for each column.
         exerciseNameCol.setCellValueFactory(new PropertyValueFactory<>("ExerciseName"));
         weightCol.setCellValueFactory(new PropertyValueFactory<>("Weight"));
         setsCol.setCellValueFactory(new PropertyValueFactory<>("TotalSets"));
         repsCol.setCellValueFactory(new PropertyValueFactory<>("RangeOfReps"));
 
+        if(!WorkoutApplication.isStartUP()){
+            populateGrid();
+            return;
+        }
+
+        System.out.println("Starting WorkController");
+
+        // Initializing the Custom data objects.
+        bigThree = new BigThreeData();
+        pbData = new PersonalBestData();
+
+
 
         // Getting the Mock workout data.
         workouts.addAll(getData());
 
-        // Initializing the chosen workout with the first workout in the wokouts list.
+        // Initializing the chosen workout with the first workout in the workouts list.
         if(workouts.size() > 0) {
             setChosenWorkout(workouts.get(0));
             myListener = new MyListener() {
@@ -117,18 +118,26 @@ public class WorkoutController {
                 }
             };
         }
+        populateGrid();
+        WorkoutApplication.setStartUP(false);
 
+    }
+
+    private void populateGrid(){
+        // Variables
+        int column = 0;
+        int row = 1;
 
         // Adding the Mock data to the grid on the scroll area.
         try {
 
-            for (int i = 0; i < workouts.size(); i++) {
+            for (Workout workout : workouts) {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(WorkoutApplication.class.getResource("workoutEntry.fxml"));
                 AnchorPane anchorPane = loader.load();
 
                 WorkoutEntryController wkEntryController = loader.getController();
-                wkEntryController.setData(workouts.get(i), myListener);
+                wkEntryController.setData(workout, myListener);
                 workoutGrid.add(anchorPane, column, row++);
 
                 // Setting the width of the grid.
@@ -145,14 +154,11 @@ public class WorkoutController {
                 GridPane.setMargin(anchorPane, new Insets(5));
             }
 
-            WorkoutApplication.setStartUP(false);
-
         }catch (IOException e){
 
             e.printStackTrace();
 
         }
-
     }
 
     // Method for changing the scene to the Big Three graphs scene when Big 3 button pressed.
